@@ -59,4 +59,16 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
                 allapot.textContent = "Elérhető";
             };
         });
+        function szabadkonyvek() 
+        {   
+
+           const szabadKonyvek = [];
+           for(const konyv of konyvek) {
+                if(!konyv.kolcsonoze) {
+                    szabadKonyvek.push(konyv.konyvcim);
+                }
+           
+        }
+    }
+
         
