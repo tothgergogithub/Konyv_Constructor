@@ -20,29 +20,27 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
                     this.konyvoldalszam;
             };
         }
-
-        function hozzad() {
-            const konyvek = [
-                new Konyv_Constructor(
-                    "Harry Potter és a bölcsek köve",
-                    "J. K. Rowling",
-                    1997,
-                    320
-                ),
-                new Konyv_Constructor(
-                    "A kis herceg",
-                    "Antoine de Saint-Exupéry",
-                    1943,
-                    96
-                ),
-                new Konyv_Constructor(
-                    "1984",
-                    "George Orwell",
-                    1949,
-                    328
-                )
-            ];
-
+        function konyvLista() {
+        const konyvek = [
+            new Konyv_Constructor(
+                "Harry Potter és a bölcsek köve",
+                "J. K. Rowling",
+                1997,
+                320
+            ),
+            new Konyv_Constructor(
+                "A kis herceg",
+                "Antoine de Saint-Exupéry",
+                1943,
+                96
+            ),
+            new Konyv_Constructor(
+                "1984",
+                "George Orwell",
+                1949,
+                328
+            )
+        ];
             const tabla = document.getElementById("konyvek");
 
         
@@ -69,6 +67,9 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
                 sor.appendChild(oldalszam);
 
                 tabla.appendChild(sor);
+                console.log(konyvek);
             });
         }
+
+        konyvLista();
         
