@@ -11,13 +11,44 @@
     <table id="tablazat" border="1">
         <thead>
             <tr>
-                <th id="cim">Cím</th>
-                <th id="szerzo">Szerző</th>
-                <th id="kiadasi_ev">Kiadási év</th>
-                <th id="oldalszam">Oldalszám</th>
+                <th>Cím</th>
+                <th>Szerző</th>
+                <th>Kiadási év</th>
+                <th>Oldalszám</th>
+                <th>Kölcsönzés</th>
+                <th>Visszahozás</th>
+                <th>Állapot</th>
             </tr>
         </thead>
-        <tbody id="konyvek"></tbody>
+        <tbody>
+            <tr>
+                <td>Harry Potter és a bölcsek köve</td>
+                <td>J. K. Rowling</td>
+                <td>1997</td>
+                <td>320</td>
+                <td><button id="kolcsonoz0" type="button">Kölcsönöz</button></td>
+                <td><button id="visszahoz0" type="button" disabled>Visszahoz</button></td>
+                <td id="allapot0">Elérhető</td>
+            </tr>
+            <tr>
+                <td>A kis herceg</td>
+                <td>Antoine de Saint-Exupéry</td>
+                <td>1943</td>
+                <td>96</td>
+                <td><button id="kolcsonoz1" type="button">Kölcsönöz</button></td>
+                <td><button id="visszahoz1" type="button" disabled>Visszahoz</button></td>
+                <td id="allapot1">Elérhető</td>
+            </tr>
+            <tr>
+                <td>1984</td>
+                <td>George Orwell</td>
+                <td>1949</td>
+                <td>328</td>
+                <td><button id="kolcsonoz2" type="button">Kölcsönöz</button></td>
+                <td><button id="visszahoz2" type="button" disabled>Visszahoz</button></td>
+                <td id="allapot2">Elérhető</td>
+            </tr>
+        </tbody>
     </table>
     <script src="main.js"></script>
 </body>

@@ -20,7 +20,6 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
                     this.konyvoldalszam;
             };
         }
-        function konyvLista() {
         const konyvek = [
             new Konyv_Constructor(
                 "Harry Potter és a bölcsek köve",
@@ -41,35 +40,23 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
                 328
             )
         ];
-            const tabla = document.getElementById("konyvek");
+        konyvek.forEach(function(konyv, index) {
+            const kolcsonozGomb = document.getElementById("kolcsonoz" + index);
+            const visszahozGomb = document.getElementById("visszahoz" + index);
+            const allapot = document.getElementById("allapot" + index);
 
-        
-            tabla.innerHTML = "";
+            kolcsonozGomb.onclick = function() {
+                konyv.kolcsonoz();
+                kolcsonozGomb.disabled = true;
+                visszahozGomb.disabled = false;
+                allapot.textContent = "Kölcsönözve";
+            };
 
-            konyvek.forEach(function(konyv) {
-                const sor = document.createElement("tr");
-
-                const cim = document.createElement("td");
-                cim.textContent = konyv.konyvcim;
-
-                const szerzo = document.createElement("td");
-                szerzo.textContent = konyv.konyvszerzo;
-
-                const kiadasi_ev = document.createElement("td");
-                kiadasi_ev.textContent = konyv.konyvkiadasiev;
-
-                const oldalszam = document.createElement("td");
-                oldalszam.textContent = konyv.konyvoldalszam;
-
-                sor.appendChild(cim);
-                sor.appendChild(szerzo);
-                sor.appendChild(kiadasi_ev);
-                sor.appendChild(oldalszam);
-
-                tabla.appendChild(sor);
-                console.log(konyvek);
-            });
-        }
-
-        konyvLista();
+            visszahozGomb.onclick = function() {
+                konyv.viszonoz();
+                kolcsonozGomb.disabled = false;
+                visszahozGomb.disabled = true;
+                allapot.textContent = "Elérhető";
+            };
+        });
         
