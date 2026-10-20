@@ -103,5 +103,25 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
     document.getElementById("legregebbiMegjelen").textContent =
         legregebbi.konyvcim + " (" + legregebbi.konyvkiadasiev + ")";
 }
+function legvastagabbkonyv() 
+{
+    let legvastagabb = konyvek[0];
+    for (const konyv of konyvek) {
+        if (konyv.konyvoldalszam > legvastagabb.konyvoldalszam) {
+            legvastagabb = konyv;
+        }
+    }
+    document.getElementById("legvastagabbMegjelen").textContent =
+        legvastagabb.konyvcim + " (" + legvastagabb.konyvoldalszam + " oldal)";
+}
+function atlagosOldalszamkonyv(){
+    let osszesOldalszam = 0;
+    for (const konyv of konyvek) {
+        osszesOldalszam += konyv.konyvoldalszam;
+    }
+    const atlagosOldalszam = osszesOldalszam / konyvek.length;
+    document.getElementById("atlagosOldalszamMegjelen").textContent =
+        atlagosOldalszam.toFixed(2) + " oldal";
+}
     
       
