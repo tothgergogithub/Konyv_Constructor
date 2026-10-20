@@ -7,7 +7,14 @@
 </head>
 <body>
     <h1>Könyvtár</h1>
-
+    <label for="cim">Új könyv hozzáadaása</label>
+    <input type="text" id="cim" placeholder="Cím">
+    <input type="text" id="szerzo" placeholder="Szerző">
+    <input type="number" id="kiadasiEv" placeholder="Kiadási év">
+    <input type="number" id="oldalszam" placeholder="Oldalszám">
+    <button id="hozzaad" type="button">Hozzáad</button>
+    <br>
+    <br>
     <table id="tablazat" border="1">
         <thead>
             <tr>
@@ -54,8 +61,8 @@
     </table>
     <br>
     <br>
-    <label> Szabad Könyvek: </label>
-    <label id="megjel"> </label>
+    <button id="szabadkonyvek" type="button" onclick="szabadkonyvek()">Szabad könyvek</button>
+    <p id="megjelen"></p>
 
     <script src="main.js"></script>
 </body>

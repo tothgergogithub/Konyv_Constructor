@@ -50,6 +50,7 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
                 kolcsonozGomb.disabled = true;
                 visszahozGomb.disabled = false;
                 allapot.textContent = "Kölcsönözve";
+                frissSzabadkonyvek();
             };
 
             visszahozGomb.onclick = function() {
@@ -57,18 +58,33 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
                 kolcsonozGomb.disabled = false;
                 visszahozGomb.disabled = true;
                 allapot.textContent = "Elérhető";
+                frissSzabadkonyvek();
             };
         });
         function szabadkonyvek() 
         {   
 
            const szabadKonyvek = [];
+           
            for(const konyv of konyvek) {
-                if(!konyv.kolcsonoze) {
+                if(konyv.kolcsonoze === false) {
                     szabadKonyvek.push(konyv.konyvcim);
                 }
-           
-        }
+               
+                
+            }
+            if(szabadKonyvek.length === 0) 
+                {
+                    szabadKonyvek.push("Nincs szabad könyv");   
+                }
+        return szabadKonyvek;
     }
-
+    function frissSzabadkonyvek() 
+    {
+        document.getElementById("megjelen").textContent = szabadkonyvek().join(", ");   
+    }
+    
+    document.getElementById("szabadkonyvek").addEventListener("click", function() {
+    frissSzabadkonyvek();
+    });
         
