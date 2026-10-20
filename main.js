@@ -87,4 +87,21 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam) {
     document.getElementById("szabadkonyvek").addEventListener("click", function() {
     frissSzabadkonyvek();
     });
+    function legregebbikonyv() 
+    {
         
+   
+
+    let legregebbi = konyvek[0];
+
+    for (const konyv of konyvek) {
+        if (konyv.konyvkiadasiev < legregebbi.konyvkiadasiev) {
+            legregebbi = konyv;
+        }
+    }
+
+    document.getElementById("legregebbiMegjelen").textContent =
+        legregebbi.konyvcim + " (" + legregebbi.konyvkiadasiev + ")";
+}
+    
+      
