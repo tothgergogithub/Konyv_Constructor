@@ -123,5 +123,15 @@ function atlagosOldalszamkonyv(){
     document.getElementById("atlagosOldalszamMegjelen").textContent =
         atlagosOldalszam.toFixed(2) + " oldal";
 }
+function hozzaadKonyv()
+{
+    const cim = document.getElementById("cim").value;
+    const szerzo = document.getElementById("szerzo").value;
+    const kiadasiEv = parseInt(document.getElementById("kiadasiEv").value);
+    const oldalszam = parseInt(document.getElementById("oldalszam").value);
+   if(cim=="" || szerzo=="" || isNaN(kiadasiEv) || isNaN(oldalszam)){
+    alert("Kérlek töltsd ki az összes mezőt!");
+   }
+
+}
     
-      

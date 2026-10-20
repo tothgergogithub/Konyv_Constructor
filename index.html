@@ -12,7 +12,7 @@
     <input type="text" id="szerzo" placeholder="Szerző">
     <input type="number" id="kiadasiEv" placeholder="Kiadási év">
     <input type="number" id="oldalszam" placeholder="Oldalszám">
-    <button id="hozzaad" type="button">Hozzáad</button>
+    <button id="hozzaad" type="button" onclick="hozzaadKonyv()">Hozzáad</button>
     <br>
     <br>
     <table id="tablazat" border="1">
@@ -25,6 +25,7 @@
                 <th>Kölcsönzés</th>
                 <th>Visszahozás</th>
                 <th>Állapot</th>
+                <th>Törlés</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@
                 <td><button id="kolcsonoz0" type="button">Kölcsönöz</button></td>
                 <td><button id="visszahoz0" type="button" disabled>Visszahoz</button></td>
                 <td id="allapot0">Elérhető</td>
+                <td><button id="torol0" type="button" onclick="torolKonyv(0)">Töröl</button></td>
             </tr>
             <tr>
                 <td>A kis herceg</td>
@@ -45,6 +47,7 @@
                 <td><button id="kolcsonoz1" type="button">Kölcsönöz</button></td>
                 <td><button id="visszahoz1" type="button" disabled>Visszahoz</button></td>
                 <td id="allapot1">Elérhető</td>
+                <td><button id="torol1" type="button" onclick="torolKonyv()">Töröl</button></td>
             </tr>
             <tr>
                 <td>1984</td>
@@ -54,6 +57,8 @@
                 <td><button id="kolcsonoz2" type="button">Kölcsönöz</button></td>
                 <td><button id="visszahoz2" type="button" disabled>Visszahoz</button></td>
                 <td id="allapot2">Elérhető</td>
+                
+                <td><button id="torol2" type="button" onclick="torolKonyv()">Töröl</button></td>
 
             </tr>
         </tbody>
