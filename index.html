@@ -12,9 +12,19 @@
     <input type="text" id="szerzo" placeholder="Szerző">
     <input type="number" id="kiadasiEv" placeholder="Kiadási év">
     <input type="number" id="oldalszam" placeholder="Oldalszám">
+    <input type="text" id="kategoria" placeholder="Kategória">
     <button id="hozzaad" type="button" onclick="hozzaadKonyv()">Hozzáad</button>
     <br>
     <br>
+    <h1>Szürők</h1>
+    <label for="szuresCim">Kategória szűrés</label>
+    <select id="szuresCim">
+    <option value="osszes">Összes kategória</option>
+    <option value="fantasy">Fantasy</option>
+    <option value="filozofiai_mese">Filozófiai mese</option>
+    <option value="distopia">Dístópia</option>
+    
+</select>
     <table id="tablazat" border="1">
         <thead>
             <tr>
@@ -22,18 +32,20 @@
                 <th>Szerző</th>
                 <th>Kiadási év</th>
                 <th>Oldalszám</th>
+                <th>Kategória</th>
                 <th>Kölcsönzés</th>
                 <th>Visszahozás</th>
                 <th>Állapot</th>
                 <th>Törlés</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="konyvTablaTorzs">
             <tr>
                 <td>Harry Potter és a bölcsek köve</td>
                 <td>J. K. Rowling</td>
                 <td>1997</td>
                 <td>320</td>
+                <td>Fantasy</td>
                 <td><button id="kolcsonoz0" type="button">Kölcsönöz</button></td>
                 <td><button id="visszahoz0" type="button" disabled>Visszahoz</button></td>
                 <td id="allapot0">Elérhető</td>
@@ -44,6 +56,7 @@
                 <td>Antoine de Saint-Exupéry</td>
                 <td>1943</td>
                 <td>96</td>
+                <td>Filozófiai mese</td>
                 <td><button id="kolcsonoz1" type="button">Kölcsönöz</button></td>
                 <td><button id="visszahoz1" type="button" disabled>Visszahoz</button></td>
                 <td id="allapot1">Elérhető</td>
@@ -54,6 +67,7 @@
                 <td>George Orwell</td>
                 <td>1949</td>
                 <td>328</td>
+                <td>Dístópia</td>
                 <td><button id="kolcsonoz2" type="button">Kölcsönöz</button></td>
                 <td><button id="visszahoz2" type="button" disabled>Visszahoz</button></td>
                 <td id="allapot2">Elérhető</td>
@@ -64,6 +78,18 @@
         </tbody>
 
     </table>
+    <template id="konyvSorSablon">
+        <tr>
+            <td data-mezo="cim"></td>
+            <td data-mezo="szerzo"></td>
+            <td data-mezo="kiadasiEv"></td>
+            <td data-mezo="oldalszam"></td>
+            <td><button type="button" data-gomb="kolcsonoz">Kölcsönöz</button></td>
+            <td><button type="button" data-gomb="visszahoz" disabled>Visszahoz</button></td>
+            <td data-mezo="allapot">Elérhető</td>
+            <td><button type="button" data-gomb="torol">Töröl</button></td>
+        </tr>
+    </template>
     <br>
     <br>
     <button id="szabadkonyvek" type="button" onclick="szabadkonyvek()">Szabad könyvek</button>
