@@ -4,27 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Könyvtár</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Könyvtár</h1>
-    <label for="cim">Új könyv hozzáadaása</label>
+ 
+    <label for="cim">Új könyv hozzáadása</label>
     <input type="text" id="cim" placeholder="Cím">
     <input type="text" id="szerzo" placeholder="Szerző">
     <input type="number" id="kiadasiEv" placeholder="Kiadási év">
     <input type="number" id="oldalszam" placeholder="Oldalszám">
     <input type="text" id="kategoria" placeholder="Kategória">
+    <div class="search-box">
+   
+</div>
+ 
     <button id="hozzaad" type="button" onclick="hozzaadKonyv()">Hozzáad</button>
+ 
     <br>
     <br>
+ 
     <h1>Szűrők</h1>
  
     <label for="szuresKategoria">Kategória szűrés</label>
-    <select id="szuresKategoria" onchange="kategoriaSzures()">  
+    <select id="szuresKategoria">
         <option value="osszes">Összes kategória</option>
         <option value="Fantasy">Fantasy</option>
         <option value="Filozófiai mese">Filozófiai mese</option>
         <option value="Dístópia">Dístópia</option>
     </select>
+ 
     <table id="tablazat" border="1">
         <thead>
             <tr>
@@ -39,57 +48,25 @@
                 <th>Törlés</th>
             </tr>
         </thead>
-        <tbody id="konyvTablaTorzs">
-            <tr>
-                <td>Harry Potter és a bölcsek köve</td>
-                <td>J. K. Rowling</td>
-                <td>1997</td>
-                <td>320</td>
-                <td>Fantasy</td>
-                <td><button id="kolcsonoz0" type="button">Kölcsönöz</button></td>
-                <td><button id="visszahoz0" type="button" disabled>Visszahoz</button></td>
-                <td id="allapot0">Elérhető</td>
-                <td><button id="torol0" type="button" onclick="torolKonyv(0)">Töröl</button></td>
-            </tr>
-            <tr>
-                <td>A kis herceg</td>
-                <td>Antoine de Saint-Exupéry</td>
-                <td>1943</td>
-                <td>96</td>
-                <td>Filozófiai mese</td>
-                <td><button id="kolcsonoz1" type="button">Kölcsönöz</button></td>
-                <td><button id="visszahoz1" type="button" disabled>Visszahoz</button></td>
-                <td id="allapot1">Elérhető</td>
-                <td><button id="torol1" type="button" onclick="torolKonyv()">Töröl</button></td>
-            </tr>
-            <tr>
-                <td>1984</td>
-                <td>George Orwell</td>
-                <td>1949</td>
-                <td>328</td>
-                <td>Dístópia</td>
-                <td><button id="kolcsonoz2" type="button">Kölcsönöz</button></td>
-                <td><button id="visszahoz2" type="button" disabled>Visszahoz</button></td>
-                <td id="allapot2">Elérhető</td>
-                
-                <td><button id="torol2" type="button" onclick="torolKonyv()">Töröl</button></td>
-
-            </tr>
-        </tbody>
-
+        <tbody id="konyvTablaTorzs"></tbody>
     </table>
-   
+ 
     <br>
     <br>
-    <button id="szabadkonyvek" type="button" onclick="szabadkonyvek()">Szabad könyvek</button>
+ 
+    <button id="szabadkonyvek" type="button" onclick="frissSzabadkonyvek()">Szabad könyvek</button>
     <p id="megjelen"></p>
-    <button id="legregebbi" type="button" onclick="legregebbikonyv()">Legrégebbi könyvek</button>
+ 
+    <button id="legregebbi" type="button" onclick="legregebbikonyv()">Legrégebbi könyv</button>
     <p id="legregebbiMegjelen"></p>
-    <button id="legvastagabb" type="button" onclick="legvastagabbkonyv()">Legvastagabb könyvek</button>
+ 
+    <button id="legvastagabb" type="button" onclick="legvastagabbkonyv()">Legvastagabb könyv</button>
     <p id="legvastagabbMegjelen"></p>
+ 
     <button id="atlagosOldalszam" type="button" onclick="atlagosOldalszamkonyv()">Átlagos oldalszám</button>
     <p id="atlagosOldalszamMegjelen"></p>
-
+ 
+ 
     <script src="main.js"></script>
 </body>
 </html>

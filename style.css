@@ -1,0 +1,272 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+    --navy: #172b3a;
+    --navy-light: #243e50;
+    --cream: #f6f3ec;
+    --white: #ffffff;
+    --gold: #c69b55;
+    --gold-light: #ead8b8;
+    --text: #263746;
+    --muted: #82909a;
+    --green: #27845c;
+    --red: #c65353;
+    --shadow: 0 12px 35px rgba(25, 43, 57, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    padding: 45px 6%;
+    min-height: 100vh;
+}
+
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--navy);
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+body > h1:first-child {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+body > h1:first-child::after {
+    content: '';
+    display: block;
+    width: 65px;
+    height: 4px;
+    background: var(--gold);
+    margin: 15px auto 0;
+    border-radius: 10px;
+}
+
+
+
+label {
+    display: block;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+input,
+select {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 15px 17px;
+    border: 1px solid #e3e0d8;
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--text);
+    outline: none;
+    margin: 0 7px 12px 0;
+    transition: 0.25s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(198, 155, 85, 0.13);
+}
+
+input::placeholder {
+    color: #a5afb5;
+}
+
+
+button {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 20px;
+    background: var(--navy);
+    color: white;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: var(--gold);
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(198, 155, 85, 0.2);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    background: #d9dedf;
+    color: #879195;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+
+#hozzaad {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 30px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+#hozzaad:hover {
+    background: var(--navy);
+    color: white;
+}
+
+
+
+#szuresKategoria {
+    min-width: 220px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+
+
+#tablazat {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-top: 10px;
+}
+
+#tablazat thead {
+    background: var(--navy);
+    color: white;
+}
+
+#tablazat th {
+    padding: 19px 13px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#tablazat td {
+    padding: 16px 13px;
+    font-size: 13px;
+    border-bottom: 1px solid #eeeae2;
+}
+
+#tablazat tbody tr:nth-child(even) {
+    background: #faf9f6;
+}
+
+#tablazat tbody tr {
+    transition: background 0.2s ease;
+}
+
+#tablazat tbody tr:hover {
+    background: #f3eddf;
+}
+
+#tablazat tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#tablazat button {
+    padding: 9px 12px;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+#tablazat button[id^="kolcsonoz"] {
+    background: var(--green);
+}
+
+#tablazat button[id^="visszahoz"] {
+    background: #397eae;
+}
+
+#tablazat button[id^="torol"] {
+    background: var(--red);
+}
+
+
+
+#szabadkonyvek,
+#legregebbi,
+#legvastagabb,
+#atlagosOldalszam {
+    background: var(--navy-light);
+    margin: 8px 7px 8px 0;
+    padding: 14px 20px;
+}
+
+#megjelen,
+#legregebbiMegjelen,
+#legvastagabbMegjelen,
+#atlagosOldalszamMegjelen {
+    background: white;
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    margin: 8px 0 18px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: var(--shadow);
+    color: var(--navy);
+    font-weight: 600;
+    min-height: 20px;
+}
+
+
+
+@media (max-width: 800px) {
+    body {
+        padding: 25px 4%;
+    }
+
+    body > h1:first-child {
+        font-size: 36px;
+    }
+
+    input {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #tablazat {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #tablazat th,
+    #tablazat td {
+        padding: 12px;
+    }
+
+    #szabadkonyvek,
+    #legregebbi,
+    #legvastagabb,
+    #atlagosOldalszam {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
