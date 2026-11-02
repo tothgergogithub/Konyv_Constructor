@@ -48,57 +48,83 @@ function Konyv_Constructor(cim, szerzo, kiadasi_ev, oldalszam, kategoria) {
         konyvek.push(konyv2);
         konyvek.push(konyv3);
 
-        function konyvGombokBekotese(konyv, index) {
-            const kolcsonozGomb = document.getElementById("kolcsonoz" + index);
-            const visszahozGomb = document.getElementById("visszahoz" + index);
-            const torolGomb = document.getElementById("torol" + index);
-            const allapot = document.getElementById("allapot" + index);
+        function konyvGombokBekotese(konyv, id) {
+    const kolcsonozGomb = document.getElementById("kolcsonoz" + id);
+    const visszahozGomb = document.getElementById("visszahoz" + id);
+    const torolGomb = document.getElementById("torol" + id);
+    const allapot = document.getElementById("allapot" + id);
+ 
+    kolcsonozGomb.onclick = function () {
+        konyv.kolcsonoz();
+        kolcsonozGomb.disabled = true;
+        visszahozGomb.disabled = false;
+        allapot.textContent = "Kölcsönözve";
+        frissSzabadkonyvek();
+    };
+ 
+    visszahozGomb.onclick = function () {
+        konyv.visszahoz();
+        kolcsonozGomb.disabled = false;
+        visszahozGomb.disabled = true;
+        allapot.textContent = "Elérhető";
+        frissSzabadkonyvek();
+    };
+ 
+    torolGomb.onclick = function () {
+        const konyvIndex = konyvek.indexOf(konyv);
+        konyvek.splice(konyvIndex, 1);
+ 
+        const sor = document.getElementById("sor" + id);
+        sor.remove();
+ 
+        frissSzabadkonyvek();
+    };
 
-            kolcsonozGomb.onclick = function() {
-                konyv.kolcsonoz();
-                kolcsonozGomb.disabled = true;
-                visszahozGomb.disabled = false;
-                allapot.textContent = "Kölcsönözve";
-                frissSzabadkonyvek();
-            };
-
-            visszahozGomb.onclick = function() {
-                konyv.viszonoz();
-                kolcsonozGomb.disabled = false;
-                visszahozGomb.disabled = true;
-                allapot.textContent = "Elérhető";
-                frissSzabadkonyvek();
-            };
-
-            torolGomb.onclick = function() {
-                const konyvIndex = konyvek.indexOf(konyv);
-                if (konyvIndex !== -1) {
-                    konyvek.splice(konyvIndex, 1);
-                }
-                torolGomb.closest("tr").remove();
-                frissSzabadkonyvek();
-            };
         }
-
         konyvek.forEach(konyvGombokBekotese);
         let kovetkezoKonyvId = konyvek.length;
 
 function konyvSorMegjelenit(konyv, id) {
-    const sablon = document.getElementById("konyvSorSablon");
-    const sor = sablon.content.cloneNode(true).firstElementChild;
-
-    sor.cells[0].textContent = konyv.konyvcim;
-    sor.cells[1].textContent = konyv.konyvszerzo;
-    sor.cells[2].textContent = konyv.konyvkiadasiev;
-    sor.cells[3].textContent = konyv.konyvoldalszam;
-    sor.cells[4].firstElementChild.id = "kolcsonoz" + id;
-    sor.cells[5].firstElementChild.id = "visszahoz" + id;
-    sor.cells[6].id = "allapot" + id;
-    sor.cells[7].firstElementChild.id = "torol" + id;
-
+   const sor = document.createElement("tr");
+    sor.id = "sor" + id;
+ 
+    sor.innerHTML =
+        "<td>" + konyv.konyvcim + "</td>" +
+        "<td>" + konyv.konyvszerzo + "</td>" +
+        "<td>" + konyv.konyvkiadasiev + "</td>" +
+        "<td>" + konyv.konyvoldalszam + "</td>" +
+        "<td>" + konyv.konyvkategoria + "</td>" +
+        "<td><button type='button' id='kolcsonoz" + id + "'>Kölcsönöz</button></td>" +
+        "<td><button type='button' id='visszahoz" + id + "' disabled>Visszahoz</button></td>" +
+        "<td id='allapot" + id + "'>Elérhető</td>" +
+        "<td><button type='button' id='torol" + id + "'>Töröl</button></td>";
+ 
     document.getElementById("konyvTablaTorzs").appendChild(sor);
+ 
     konyvGombokBekotese(konyv, id);
 }
+for (let i = 0; i < konyvek.length; i++) {
+    konyvSorMegjelenit(konyvek[i], kovetkezoKonyvId);
+    kovetkezoKonyvId++;
+}
+function kategoriaSzures() {
+    const kivalasztottKategoria = document.getElementById("szuresCim").value;
+ 
+    const sorok = document.getElementById("konyvTablaTorzs").rows;
+ 
+    for (const sor of sorok) {
+        const kategoria = sor.cells[4].textContent;
+ 
+        if (kivalasztottKategoria == "osszes") {
+            sor.hidden = false;
+        } else if (kategoria == kivalasztottKategoria) {
+            sor.hidden = false;
+        } else {
+            sor.hidden = true;
+        }
+    }
+}
+
 
         function szabadkonyvek() 
         {   
@@ -106,13 +132,13 @@ function konyvSorMegjelenit(konyv, id) {
            const szabadKonyvek = [];
            
            for(const konyv of konyvek) {
-                if(konyv.kolcsonoze === false) {
+                if(konyv.kolcsonoze == false) {
                     szabadKonyvek.push(konyv.konyvcim);
                 }
                
                 
             }
-            if(szabadKonyvek.length === 0) 
+            if(szabadKonyvek.length == 0) 
                 {
                     szabadKonyvek.push("Nincs szabad könyv");   
                 }
@@ -120,16 +146,14 @@ function konyvSorMegjelenit(konyv, id) {
     }
     function frissSzabadkonyvek() 
     {
-        document.getElementById("megjelen").textContent = szabadkonyvek().join(", ");   
+          document.getElementById("megjelen").textContent = szabadkonyvek();
     }
     
-    document.getElementById("szabadkonyvek").addEventListener("click", function() {
+    document.getElementById("szuresKategoria").addEventListener("change", function() {
     frissSzabadkonyvek();
     });
     function legregebbikonyv() 
     {
-        
-   
 
     let legregebbi = konyvek[0];
 
@@ -164,11 +188,7 @@ function atlagosOldalszamkonyv(){
 }
 function hozzaadKonyv()
 {
-    if(document.getElementById("cim").value === "" ||
-       document.getElementById("szerzo").value === "" ||
-       document.getElementById("kiadasiEv").value === "" ||
-       document.getElementById("oldalszam").value === "" ||
-       document.getElementById("kategoria").value === "")
+    if(document.getElementById("cim").value == "" || document.getElementById("szerzo").value =="" || document.getElementById("kiadasiEv").value == "" || document.getElementById("oldalszam").value == "" || document.getElementById("kategoria").value == "")
        {
         alert("Kérlek töltsd ki az összes mezőt!");
        }

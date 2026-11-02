@@ -16,15 +16,15 @@
     <button id="hozzaad" type="button" onclick="hozzaadKonyv()">Hozzáad</button>
     <br>
     <br>
-    <h1>Szürők</h1>
-    <label for="szuresCim">Kategória szűrés</label>
-    <select id="szuresCim">
-    <option value="osszes">Összes kategória</option>
-    <option value="fantasy">Fantasy</option>
-    <option value="filozofiai_mese">Filozófiai mese</option>
-    <option value="distopia">Dístópia</option>
-    
-</select>
+    <h1>Szűrők</h1>
+ 
+    <label for="szuresKategoria">Kategória szűrés</label>
+    <select id="szuresKategoria" onchange="kategoriaSzures()">  
+        <option value="osszes">Összes kategória</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Filozófiai mese">Filozófiai mese</option>
+        <option value="Dístópia">Dístópia</option>
+    </select>
     <table id="tablazat" border="1">
         <thead>
             <tr>
@@ -78,18 +78,7 @@
         </tbody>
 
     </table>
-    <template id="konyvSorSablon">
-        <tr>
-            <td data-mezo="cim"></td>
-            <td data-mezo="szerzo"></td>
-            <td data-mezo="kiadasiEv"></td>
-            <td data-mezo="oldalszam"></td>
-            <td><button type="button" data-gomb="kolcsonoz">Kölcsönöz</button></td>
-            <td><button type="button" data-gomb="visszahoz" disabled>Visszahoz</button></td>
-            <td data-mezo="allapot">Elérhető</td>
-            <td><button type="button" data-gomb="torol">Töröl</button></td>
-        </tr>
-    </template>
+   
     <br>
     <br>
     <button id="szabadkonyvek" type="button" onclick="szabadkonyvek()">Szabad könyvek</button>
