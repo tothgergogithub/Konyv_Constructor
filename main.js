@@ -228,8 +228,7 @@ function atlagosOldalszamkonyv() {
  
     const atlagosOldalszam = osszesOldalszam / konyvek.length;
  
-    document.getElementById("atlagosOldalszamMegjelen").textContent =
-        atlagosOldalszam.toFixed(2) + " oldal";
+    document.getElementById("atlagosOldalszamMegjelen").textContent = atlagosOldalszam.toFixed(2) + " oldal";
 }
  
 function hozzaadKonyv() {
